@@ -14,9 +14,13 @@ import (
 )
 
 var (
-	s   *grpc.Server
-	ctx context.Context
+	s *grpc.Server
 )
+
+func initRoutes() {
+	routes.InitUserRoutes(s)
+	routes.InitHotelRoutes(s)
+}
 
 func init() {
 
@@ -33,7 +37,7 @@ func init() {
 	s = grpc.NewServer(
 		grpc.UnaryInterceptor(contextInterceptor()),
 	)
-	routes.InitUserRoutes(s)
+	initRoutes()
 	db.ConnectDatabase()
 }
 

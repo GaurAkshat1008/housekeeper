@@ -8,12 +8,14 @@ import (
 
 type Hotel struct {
 	gorm.Model
-	ID        uint
-	Name      string
-	Address   string
-	Phone     string
-	Email     string
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	User      []User
+	ID          uint
+	Name        string
+	Address     string
+	Phone       string
+	Email       string
+	Website     string
+	Description string
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+	User        []User
 }

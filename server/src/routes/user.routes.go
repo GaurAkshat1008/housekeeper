@@ -8,5 +8,5 @@ import (
 )
 
 func InitUserRoutes(s *grpc.Server) {
-	pb.RegisterUserServiceServer(s, &controllers.Server{})
+	pb.RegisterUserServiceServer(s, &controllers.UserServer{})
 }

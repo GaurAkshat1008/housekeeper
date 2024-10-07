@@ -1,22 +1,12 @@
 package routes
 
 import (
-	"net/http"
-	"src/index/src/utils"
+	"src/index/src/controllers"
+	pb "src/index/src/gRPC/hotel"
 
-	"github.com/gorilla/mux"
+	"google.golang.org/grpc"
 )
 
-func InitHotelRoutes() *mux.Router {
-
-	utils.Logger.Info("Initializing hotel routes")
-
-	router := mux.NewRouter()
-	router.HandleFunc("/hotels", getHotels).Methods("GET")
-
-	return router
-}
-
-func getHotels(w http.ResponseWriter, r *http.Request) {
-	// Get all hotels
+func InitHotelRoutes(s *grpc.Server) {
+	pb.RegisterHotelServiceServer(s, &controllers.HotelServer{})
 }
